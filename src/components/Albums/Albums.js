@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
+import Album from "../Album/Album";
 
 class Albums extends Component {
   constructor() {
@@ -21,7 +22,20 @@ class Albums extends Component {
   }
 
   render() {
-    return <div>{JSON.stringify(this.state.albums)} </div>;
+    // return <div>{JSON.stringify(this.state.albums)} </div>;
+    return (
+      <div>
+        {this.state.albums.map(album => (
+          <Album
+            album={album.collectionName}
+            imageUrl={album.artworkUrl100}
+            releaseDate={album.releaseDate}
+            genre={album.primaryGenreName}
+            // videoUrl={album.url}
+          />
+        ))}
+      </div>
+    );
   }
 }
 
